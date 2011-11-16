@@ -18,7 +18,17 @@
 #pragma mark Initialization
 #pragma mark -
 
+- (void)applicationDidBecomeActive:(NSNotification *)notification
+{
+    if (isHidden == YES)
+    {
+        [self applicationDidFinishLaunching:NSApplicationDidFinishLaunchingNotification];
+        isHidden = NO;
+    }
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    isHidden = NO;
     prefs = [PrefsController sharedInstance];
     state = [SessionMagic sharedInstance];
     [state setDelegate:self];
@@ -439,6 +449,12 @@
     
     [statusItem release];
     [super dealloc];
+}
+
+- (IBAction)hide:(id)sender
+{
+    isHidden = YES;
+    [[NSStatusBar systemStatusBar] removeStatusItem:statusItem];
 }
 
 @end

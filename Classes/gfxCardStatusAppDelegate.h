@@ -55,6 +55,9 @@
     // power source monitor
     PowerSourceMonitor *powerSourceMonitor;
     PowerSource lastPowerSource;
+    
+        //Checks whether Hide Functionality is enabled
+    BOOL isHidden;
 }
 
 - (void)updateMenu;
@@ -67,5 +70,8 @@
 - (IBAction)closeAbout:(id)sender;
 - (IBAction)openApplicationURL:(id)sender;
 - (IBAction)quit:(id)sender;
+
+    //Hide Functionality
+- (IBAction)hide:(id)sender;
 
 @end
